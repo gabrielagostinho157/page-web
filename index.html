@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Primeiro Projeto Interativo - Start Alura</title>
+    <style>
+        /* CSS Integrado */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f0f2f5;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* Layout com Flexbox */
+        main {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        h1 {
+            color: #1877f2;
+            font-size: 1.8rem;
+        }
+
+        p {
+            line-height: 1.5;
+            color: #555;
+        }
+
+        .contador-container {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e4e6eb;
+        }
+
+        .numero-contador {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #222;
+            margin-bottom: 10px;
+        }
+
+        /* Botão Acessível e Estilizado */
+        .botao-interacao {
+            background-color: #1877f2;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .botao-interacao:hover {
+            background-color: #166fe5;
+        }
+
+        .botao-interacao:focus {
+            outline: 3px solid #71b4ff;
+        }
+
+        .mensagem-meta {
+            font-weight: bold;
+            color: #2bae66;
+            min-height: 24px; /* Evita que o layout pule quando o texto aparece */
+        }
+
+        footer {
+            margin-top: 20px;
+            font-size: 0.85rem;
+            color: #777;
+            max-width: 400px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <main>
+        <header>
+            <h1>Minha Primeira Interação</h1>
+        </header>
+
+        <section aria-label="Conteúdo Principal">
+            <p>Este é um projeto simples que demonstra o uso de HTML semântico, estilização com Flexbox e manipulação do DOM com JavaScript.</p>
+        </section>
+
+        <section class="contador-container" aria-live="polite">
+            <div class="numero-contador" id="contador">0</div>
+            <button class="botao-interacao" id="btnInteragir" aria-label="Curtir esta página">
+                👍 Curtir Página
+            </button>
+            <p class="mensagem-meta" id="mensagemAviso"></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>Desenvolvido com foco em acessibilidade (leitores de tela) e interações digitais conscientes e transparentes.</p>
+    </footer>
+
+    <script>
+        // Seleção de elementos do DOM
+        const contadorElemento = document.getElementById('contador');
+        const botaoElemento = document.getElementById('btnInteragir');
+        const mensagemElemento = document.getElementById('mensagemAviso');
+
+        // Variável de estado
+        let cliques = 0;
+
+        // Função para atualizar o contador com Lógica Condicional
+        botaoElemento.addEventListener('click', () => {
+            cliques++;
+            
+            // Atualiza o texto do contador no HTML
+            contadorElemento.textContent = cliques;
+
+            // Lógica condicional básica
+            if (cliques === 10) {
+                mensagemElemento.textContent = "🎉 Parabéns! Você alcançou 10 curtidas!";
+            } else if (cliques === 20) {
+                mensagemElemento.textContent = "🚀 Sensacional! Obrigado pelo engajamento!";
+            }
+        });
+    </script>
+
+</body>
+</html>
